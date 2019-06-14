@@ -25,10 +25,8 @@ def proteins(strand):
     proteins = []
     for condon in (strand[i:i + 3] for i in range(0, len(strand), 3)):
         protein = translate[condon]
-        if protein:
-            if not protein in proteins:
-                proteins.append(protein)
-        else:
-            break
-
+        if not protein:
+            return proteins
+        if not protein in proteins:
+            proteins.append(protein)
     return proteins
